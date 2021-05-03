@@ -9,6 +9,8 @@ import UIKit
 
 class SearchGroups: UITableViewController {
     
+    var searchGroups = ["Sportcar", "Хоккей"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -17,9 +19,17 @@ class SearchGroups: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return searchGroups.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier:SearchCell.searchGroupIdentifier , for: indexPath) as! SearchCell
+        let searchGroup = searchGroups[indexPath.row]
+        cell.configureGroupe(title: searchGroup, image: UIImage(systemName: "person.3.fill") )
+        
+
+        
+        return cell
+        
     }
 }
