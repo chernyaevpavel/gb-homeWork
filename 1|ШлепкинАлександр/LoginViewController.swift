@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         guard identifier == "loginSegue" else {
             return false
         }
-        let isLoginPasswordCorrect = loginPutText.text == "1" && passowrdPutText.text == "1"
+        let isLoginPasswordCorrect = loginPutText.text == "" && passowrdPutText.text == ""
         if isLoginPasswordCorrect {
             return true
         } else {
