@@ -8,68 +8,57 @@
 import UIKit
 
 class FriendsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
+    @IBOutlet weak var tableView: UITableView!
     
     let friend = Friend()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-
-       
     }
-
-    // MARK: - Table view data source
-//
-     func numberOfSections(in tableView: UITableView) -> Int {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friend.friends.count
         
-     }
-
+    }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FriedsCellTableViewCell.reuseId , for: indexPath) as! FriedsCellTableViewCell
         let bib = friend.friends[indexPath.row]
         
         cell.friendNameLable.text = bib.name
         cell.imageFriend.image = bib.avatar
         
-       return cell
+        return cell
         
         
     }
     
-    
-       
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToProfile" {
-            let vc = segue.destination as! ProfileFriendViewController
-            let indexPath = segue as! IndexPath
-            let user = friend.friends[indexPath.row]
-            vc.users = user
-
-
-    }
-
-    
+        guard segue.identifier == "goToProfile" else { return }
+        guard let vc = segue.destination as? ProfileFriendViewController else { return }
+        guard let indexPath = tableView.indexPathForSelectedRow  else { return }
+        
+        let user = friend.friends[indexPath.row]
+        vc.users = user
     }
 }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // Интересная функция Alert
+
+
+
+
+
+
+
+
+
+
+// Интересная функция Alert
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let user = friend.friends[indexPath.row]
 //
