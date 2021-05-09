@@ -14,10 +14,7 @@ class FriedsCellTableViewCell: UITableViewCell {
     @IBOutlet weak var imageFriend: UIImageView!
     
     
-    func someFunc(title: String, photo: UIImage) {
-        friendNameLable.text = title
-        imageFriend.image = photo
-    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -9,12 +9,13 @@ import UIKit
 
 private let reuseIdentifier = "FriendPhotoUICollectionViewController"
 
-let friendCollectionFoto = FriendProfile.friends
+var friendCollectionFoto = Friend()
 
 class FriendPhotoUICollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
     
 
@@ -25,20 +26,21 @@ class FriendPhotoUICollectionViewController: UICollectionViewController {
 //    }
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return friendCollectionFoto.count
+        return friendCollectionFoto.friends.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoFriendCollectionViewCell.reuseIden , for: indexPath) as! PhotoFriendCollectionViewCell
-        let photoCollection = friendCollectionFoto[indexPath.row]
+        let photoCollection = friendCollectionFoto.friends[indexPath.row]
+        cell.photoCollectionView.image = photoCollection.collectionPhoto[0]
 
 
         return cell

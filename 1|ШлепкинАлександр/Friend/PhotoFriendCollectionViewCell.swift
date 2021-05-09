@@ -13,14 +13,7 @@ class PhotoFriendCollectionViewCell: UICollectionViewCell {
     
     
     
-    @IBOutlet weak var photoCollection: UIImageView!
+    @IBOutlet weak var photoCollectionView: UIImageView!
     
-    let photoFriends = FriendProfile.friends
-    
-    func photoCollection(photo: UIImage) {
-        photoCollection.image = photo
-    
-        
-    }
     
 }
